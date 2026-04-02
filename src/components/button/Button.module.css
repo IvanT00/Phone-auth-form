@@ -1,0 +1,20 @@
+.button {
+  background-color: var(--button-color);
+  border-radius: var(--button-radius);
+  color: var(--button-text-color);
+  padding: 16px 112.5px;
+  font-weight: 600;
+  max-width: 436.24px;
+  border: 1px solid var(--button-color);
+}
+.button:hover {
+  transition-duration: var(--animation-duration);
+  color: var(--button-color);
+  background-color: var(--button-text-color);
+}
+.button:active {
+  transition-duration: var(--animation-duration);
+  transform: scale(0.95);
+}
+
+/*# sourceMappingURL=Button.module.css.map */

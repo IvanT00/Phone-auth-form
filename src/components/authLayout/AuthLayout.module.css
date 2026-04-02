@@ -1,0 +1,17 @@
+.auth__title {
+  margin-bottom: 24px;
+}
+.auth__subtitle {
+  margin-bottom: 24px;
+  max-width: 350px;
+}
+.auth__phoneField {
+  margin-bottom: 40px;
+}
+.auth__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 618.67px;
+}
+
+/*# sourceMappingURL=AuthLayout.module.css.map */

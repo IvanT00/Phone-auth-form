@@ -1,0 +1,21 @@
+:root{
+  --main-font: 'Inter', sans-serif;
+
+  --button-color: #1975FF;
+  --input-border-color: #CED2DA;
+  --text-color: #141C24;
+  --placeholder-color: #637083;
+  --background-color: #FFFFFF;
+  --resend-timer-color-active: #97A1AF;
+  --button-text-color: #FFFFFF;
+
+  --button-radius: 16px;
+  --input-radius: 8px;
+
+  --p-size: clamp(16px, 1.0417vw + 1px, 21px);
+  --h2-size: clamp(24px, 1.4583vw + 3px, 31px);
+  --resend-timer-font-size: 14px;
+  --resend-timer-font-size-inactive: 16px;
+
+  --animation-duration: 0.3s;
+}

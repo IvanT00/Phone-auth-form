@@ -1,0 +1,15 @@
+body{
+  font-family: var(--main-font), sans-serif;
+  font-size: var(--p-size);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.container{
+  max-width: 100%;
+  padding-left: 240px;
+  padding-right: 240px;
+  margin: 96px auto;
+}

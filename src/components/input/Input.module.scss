@@ -1,0 +1,18 @@
+.input{
+  padding: 12px;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--input-radius);
+  width: 100%;
+  &::placeholder {
+    color: var(--placeholder-color);
+  }
+  &:focus{
+    border-color: #5f6064;
+    outline: none;
+  }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

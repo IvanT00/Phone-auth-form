@@ -1,0 +1,17 @@
+.auth{
+  &__title{
+    margin-bottom: 24px;
+  }
+  &__subtitle{
+    margin-bottom: 24px;
+    max-width: 350px;
+  }
+  &__phoneField{
+    margin-bottom: 40px;
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    max-width: 618.67px;
+  }
+}
