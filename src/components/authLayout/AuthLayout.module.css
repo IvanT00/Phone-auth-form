@@ -13,5 +13,10 @@
   flex-direction: column;
   max-width: 618.67px;
 }
+.auth__voidInput {
+  color: red;
+  margin-top: 16px;
+  font-size: 18px;
+}
 
 /*# sourceMappingURL=AuthLayout.module.css.map */

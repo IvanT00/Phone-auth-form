@@ -1,13 +1,17 @@
-import AuthLayout from "./components/authLayout/AuthLayout.tsx";
+import {Navigate, Route, Routes} from "react-router";
+import PhoneLoginPage from "./pages/phoneLoginPage/PhoneLoginPage.tsx";
+import OtpVerificationPage from "./pages/otpVerificationPage/OtpVerificationPage.tsx";
 
 const App = () => {
     return (
-        <AuthLayout
-            title="Вход"
-            subtitle="Введите номер телефона для входа в личный кабинет"
-            buttonText="Продолжить"
-        >
-        </AuthLayout>
+        <>
+            <Routes>
+                <Route path="/" element={<Navigate to="/auth/phone" replace/>}/>
+                <Route path="/auth/phone" element={<PhoneLoginPage/>}/>
+                <Route path="/auth/otp" element={<OtpVerificationPage/>}/>
+            </Routes>
+
+        </>
     );
 };
 
