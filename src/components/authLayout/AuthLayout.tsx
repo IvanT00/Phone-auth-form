@@ -1,10 +1,8 @@
 import classes from './AuthLayout.module.scss';
 import Input from "../input/Input.tsx";
 import Button from "../button/Button.tsx";
-import {type ReactNode} from "react";
-import {type ChangeEvent, useState} from "react";
-import formatPhone from "../../utils/formatPhone.ts";
-import {useNavigate} from "react-router";
+import {type ChangeEvent, type ReactNode} from "react";
+
 
 interface AuthLayoutProps {
     children?: ReactNode,
@@ -14,34 +12,15 @@ interface AuthLayoutProps {
     resetText?: string,
     phoneValue?: string,
     isPhoneReadOnly?: boolean,
-    buttonNavigateTo: string,
-    errorMessage?: string
+    errorMessage?: string,
+    inputValue?: string,
+    inputHandler: (e: ChangeEvent<HTMLInputElement>) => void,
+    buttonHandler: () => void,
+    error: boolean
 }
 
-const AuthLayout = ({ children, title, subtitle, buttonText, buttonNavigateTo, errorMessage }: AuthLayoutProps) => {
-    const navigate = useNavigate();
-    const [displayValue, setDisplayValue] = useState<string>('');
-    const [error, setError] = useState<boolean>(false);
-
-    const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const digits = e.target.value.replace(/\D/g, '');
-        const formatted = formatPhone(digits);
-        setDisplayValue(formatted);
-        setError(false);
-    };
-
-    const handleButtonClick = () => {
-        const digits = displayValue.replace(/\D/g, '');
-        console.log(digits);
-        if (digits.length === 0) {
-            setError(true);
-            return;
-        }
-        if(digits.length > 10) {
-            setError(false);
-            navigate(buttonNavigateTo);
-        }
-    };
+const AuthLayout = ({ children, title, subtitle, buttonText, inputValue, inputHandler, errorMessage, buttonHandler, error }: AuthLayoutProps) => {
+    
 
     return (
         <div className={'container'}>
@@ -50,13 +29,13 @@ const AuthLayout = ({ children, title, subtitle, buttonText, buttonNavigateTo, e
                 <div className={classes.auth__phoneField}>
                     <p className={classes.auth__subtitle}>{subtitle}</p>
                     <Input
-                        value={displayValue}
-                        onChange={handleNumberChange}
+                        value={inputValue}
+                        onChange={inputHandler}
                         placeholder={'Телефон'}
                     />
                     {children}
                 </div>
-                <Button onClick={handleButtonClick}>{buttonText}</Button>
+                <Button onClick={buttonHandler}>{buttonText}</Button>
                 {error && (
                     <span className={classes.auth__voidInput}>{errorMessage}</span>
                 )}
