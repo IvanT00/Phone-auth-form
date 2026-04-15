@@ -20,19 +20,20 @@ const PhoneLoginPage = () => {
     const getOtp = async(value: string) =>{
         const options = {
             method: 'POST',
-            url: '/api/auth/otp',
+            url: 'https://juniorsbootcamp.ru/api/auth/otp',
             headers: {'Content-Type': 'application/json'},
             data: {phone: value}
         };
         try{
             const res = await axios.request(options);
             console.log(res.data);
+            return res.data.success;
         }catch(e){
            console.log(e, '((((((');
         }
     }
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async() => {
         const digits = displayValue.replace(/\D/g, '');
         if (digits.length === 0) {
             setError(true);
@@ -40,8 +41,11 @@ const PhoneLoginPage = () => {
         }
         if(digits.length === 11) {
             setError(false);
-            getOtp(displayValue);
-            // navigate("/auth/otp");
+            const res = await getOtp(displayValue);
+            if (res === true) {
+                navigate("/auth/otp", { state: { phone: displayValue } });
+            }
+            
         }
         
     };

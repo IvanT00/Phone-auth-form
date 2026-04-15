@@ -7,12 +7,14 @@ interface InputProps {
     placeholder?: string,
     onChange: (e: ChangeEvent<HTMLInputElement>) => void,
     value?: string,
+    disabled?: boolean,
+    max?: number
 }
 
-const Input = ({placeholder, onChange, value} : InputProps) => {
+const Input = ({placeholder, onChange, value, disabled, max} : InputProps) => {
 
     return (
-        <input value={value} onChange={onChange} placeholder={placeholder} className={classes.input} />
+        <input maxLength={max} value={value} disabled={disabled} onChange={onChange} placeholder={placeholder} className={classes.input} />
     );
 };
 

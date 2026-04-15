@@ -16,10 +16,11 @@ interface AuthLayoutProps {
     inputValue?: string,
     inputHandler: (e: ChangeEvent<HTMLInputElement>) => void,
     buttonHandler: () => void,
-    error: boolean
+    error: boolean,
+    disabled?: boolean
 }
 
-const AuthLayout = ({ children, title, subtitle, buttonText, inputValue, inputHandler, errorMessage, buttonHandler, error }: AuthLayoutProps) => {
+const AuthLayout = ({ children, title, subtitle, buttonText, inputValue, inputHandler, errorMessage, buttonHandler, error, disabled }: AuthLayoutProps) => {
     
 
     return (
@@ -32,6 +33,7 @@ const AuthLayout = ({ children, title, subtitle, buttonText, inputValue, inputHa
                         value={inputValue}
                         onChange={inputHandler}
                         placeholder={'Телефон'}
+                        disabled={disabled}
                     />
                     {children}
                 </div>
