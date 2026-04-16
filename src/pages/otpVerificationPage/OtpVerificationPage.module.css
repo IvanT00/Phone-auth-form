@@ -2,4 +2,20 @@
   margin-top: 24px;
 }
 
+.timerContainer {
+  font-weight: 400;
+  font-size: 16px;
+  color: #97A1AF;
+  margin-left: 240px;
+  margin-top: 40px;
+}
+
+.timerContainerEnd {
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 350px;
+  margin-top: 40px;
+}
+
 /*# sourceMappingURL=OtpVerificationPage.module.css.map */

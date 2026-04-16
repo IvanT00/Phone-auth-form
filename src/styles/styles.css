@@ -168,7 +168,7 @@ body {
   max-width: 100%;
   padding-left: 240px;
   padding-right: 240px;
-  margin: 96px auto;
+  margin: 96px auto 0 auto;
 }
 
 @font-face {

@@ -1,8 +1,7 @@
-// import classe from './PhoneLoginPage.module.scss'
 import AuthLayout from "../../components/authLayout/AuthLayout.tsx";
-import {type ChangeEvent, useState} from "react";
+import { type ChangeEvent, useState } from "react";
 import formatPhone from "../../utils/formatPhone.ts";
-import {data, useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 const PhoneLoginPage = () => {
@@ -17,38 +16,37 @@ const PhoneLoginPage = () => {
         setError(false);
     };
 
-    const getOtp = async(value: string) =>{
+    const getOtp = async (value: string) => {
         const options = {
             method: 'POST',
             url: 'https://juniorsbootcamp.ru/api/auth/otp',
-            headers: {'Content-Type': 'application/json'},
-            data: {phone: value}
+            headers: { 'Content-Type': 'application/json' },
+            data: { phone: value }
         };
-        try{
+        try {
             const res = await axios.request(options);
-            console.log(res.data);
-            return res.data.success;
-        }catch(e){
-           console.log(e, '((((((');
+            return { success: res.data.success, retryDelay: res.data.retryDelay };
+        } catch (e) {
+            console.log(e);
+            return { success: false, retryDelay: undefined };
         }
-    }
+    };
 
-    const handleButtonClick = async() => {
+    const handleButtonClick = async () => {
         const digits = displayValue.replace(/\D/g, '');
         if (digits.length === 0) {
             setError(true);
             return;
         }
-        if(digits.length === 11) {
+        if (digits.length === 11) {
             setError(false);
-            const res = await getOtp(displayValue);
-            if (res === true) {
-                navigate("/auth/otp", { state: { phone: displayValue } });
+            const result = await getOtp(displayValue);
+            if (result.success === true) {
+                navigate("/auth/otp", { state: { phone: displayValue, delay: result.retryDelay } });
             }
-            
         }
-        
     };
+
     return (
         <AuthLayout
             inputValue={displayValue}
@@ -59,9 +57,7 @@ const PhoneLoginPage = () => {
             subtitle="Введите номер телефона для входа в личный кабинет"
             buttonText="Продолжить"
             errorMessage="Поле является обязательным"
-        >
-            
-        </AuthLayout>
+        />
     );
 };
 
